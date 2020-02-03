@@ -1,10 +1,11 @@
-let menu = {flatwhite:4,cappachino:5,latte:5,longblack:3,shortblack:3,machiato:4};
-let refinedMenu = ["flatwhite","latte"];
-let negativeRefinedMenu = [];
+let menu = {flatwhite:4,cappachino:5,latte:5,longblack:3,shortblack:3,machiato:4}; // the full list of menu items (everything that can be ordered)
+let refinedMenu = ["flatwhite","latte"]; // The results from the users search
+let negativeRefinedMenu = []; // the inverse of refinedMenu, used to remove buttons from being displayed
+let menuKeys = Object.keys(menu);
 initialButtonCreation()
 
+//Creates the initial buttons using 'menu'
 function initialButtonCreation() {
-  let menuKeys = Object.keys(menu);
   console.log(menuKeys);
   let buttonContainer = document.getElementById("buttonContainer");
   console.log(buttonContainer);
@@ -20,6 +21,14 @@ function initialButtonCreation() {
   return 1;
 }
 
+//adjusts which buttons are displayed based off of 'refinedMenu'
 function updateButtons() {
+  for(i=0;i<=menuKeys.length;i++){
+    for (x=0;x<=refinedMenu.length;x++){
+      if (refinedMenu[x] != menuKeys[i]){
+        negativeRefinedMenu.push(menuKeys[i])
+      }
+    }
+  } // creates new negativeRefinedMenu list based off of refinedMenu
 
 }
