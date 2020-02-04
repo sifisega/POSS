@@ -1,34 +1,48 @@
 let menu = {flatwhite:4,cappachino:5,latte:5,longblack:3,shortblack:3,machiato:4}; // the full list of menu items (everything that can be ordered)
-let refinedMenu = ["flatwhite","latte"]; // The results from the users search
-let negativeRefinedMenu = []; // the inverse of refinedMenu, used to remove buttons from being displayed
 let menuKeys = Object.keys(menu);
+let currentButtons = [];
+let searchResults = ["flatwhite","latte"]; // The results from the users search
+let buttonsToRemove = []; // the inverse of searchResults, used to remove buttons from being displayed
+let buttonsToAdd= []; //items that are not allready
+let buttonsToKeep= []; //items that are to keep
 initialButtonCreation()
 
 //Creates the initial buttons using 'menu'
 function initialButtonCreation() {
-  console.log(menuKeys);
   let buttonContainer = document.getElementById("buttonContainer");
-  console.log(buttonContainer);
   for(i=0;i<=menuKeys.length-1;i++){
-    console.log('done it '+(i+1)+' time/s')
     let button = document.createElement("button");
     button.innerHTML = menuKeys[i] + ' $'+ menu[menuKeys[i]];
-    console.log(menuKeys[i]);
+    button.id = menuKeys[i]; // defines button id eg. id='flatWhiteButton'
+    currentButtons.push(button.id);
     buttonContainer.appendChild(button);
-    console.log(button);
   }
-
-  return 1;
+  console.log(currentButtons);
 }
 
-//adjusts which buttons are displayed based off of 'refinedMenu'
+//adjusts which buttons are displayed based off of 'searchResults'
 function updateButtons() {
-  for(i=0;i<=menuKeys.length;i++){
-    for (x=0;x<=refinedMenu.length;x++){
-      if (refinedMenu[x] != menuKeys[i]){
-        negativeRefinedMenu.push(menuKeys[i])
+  buttonsToRemove = [];
+  buttonsToKeep = [];
+  buttonsToAdd = []
+  for (var i = 0; i < currentButtons.length; i++) {
+    if (!searchResults.includes(currentButtons[i])){
+      let tempButton = document.getElementById(currentButtons[i]);
+      tempButton.parentNode.removeChild(tempButton);
+    }
+  }// Find buttons to remove
+  for (var i = 0; i < currentButtons.length; i++) {
+    for (var x = 0; x < searchResults.length; x++) {
+      if (searchResults[x] == currentButtons[i]){
+        searchResults.splice(x,1);
       }
     }
-  } // creates new negativeRefinedMenu list based off of refinedMenu
-
+  }// Find buttons to keep and removes them from searchResults
+  for (var x = 0; x < searchResults.length; x++) {
+    let button = document.createElement("button");
+    button.innerHTML = searchResults[i] + ' $'+ menu[searchResults[i]];
+    button.id = searchResults[i]; // defines button id eg. id='flatWhiteButton'
+    currentButtons.push(button.id);
+    buttonContainer.appendChild(button);
+  }// Find buttons to add
 }
