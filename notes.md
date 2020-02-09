@@ -11,7 +11,7 @@ Left Pane:
 
 Right pane:
   Cost total
-    Will sum the cost of all selected items and customisations
+    Will sum the cost of all selected items and customizations
     Allows for the cost to be adjusted
   List of selected items
     Will display all the selected items and their details
