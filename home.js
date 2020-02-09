@@ -59,3 +59,9 @@ function addButton(x){
     currentButtons.push(button.id);
     buttonContainer.appendChild(button);
 }
+
+testy = document.getElementById('test');
+testy.addEventListener('contextmenu', e => {
+  console.log('working');
+  document.getElementById('test').style.color = 'green';
+})
