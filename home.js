@@ -77,7 +77,8 @@ function addButton(buttonId, name, buttonLocation, pressAction){
     let button = document.createElement("button");
     console.log('8' + name);
     button.innerHTML = name + ' $' + menu[name]['price'];
-    button.id = buttonId + buttonLocation; // defines button id eg. id='flatWhite1'
+    console.log('location' + buttonLocation);
+    button.id = name + buttonLocation; // defines button id eg. id='flatWhite1'
     button.name = name;
     button.onclick = function(){buttonPress(this.id, name, pressAction)};
     currentButtons.push(button.id);
@@ -87,7 +88,7 @@ function addButton(buttonId, name, buttonLocation, pressAction){
 function removeButton(buttonId, buttonLocation) {
   let garbage = buttonLocations[buttonLocation];
   let child = document.getElementById(buttonId);
-  garbage.removeChild(child);
+  console.log(garbage.removeChild(child));
 }
 
 testy = document.getElementById('test');
