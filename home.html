@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,10 +5,20 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <input type="search" id="searchInput" width="auto" placeholder="long black, flat white, etc..." oninput="doSearch()">
-      <div class="formating" id="buttonContainer">
+    <div class="formating" id="leftPane">
+      <input type="search" id="searchInput" width="auto" placeholder="long black, flat white, etc..." oninput="doSearch()">
+        <div class="formating" id="buttonContainer">
+          <button type="button" name="button"></button>
+        </div>
+    <div>
+    <div class="formating" id="rightPane">
+      <p id="subTotalOutput">Subtotal: 0$</p>
+      items
+      <div id="itemsOutput">
 
       </div>
+    </div>
+    <!-- <button id='funnymenu'>BruH</button> -->
     <script src="home.js" charset="utf-8"></script>
   </body>
 </html>

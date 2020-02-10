@@ -7,7 +7,7 @@ Left Pane:
       Clicking the button will add the item to list of requested items
         Using the buttonPress() function will determine what the button does using
     Right click option
-    Allows the user to modify details of the selected Item
+      Allows the user to modify details of the selected Item
 
 Right pane:
   Cost total

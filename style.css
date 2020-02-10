@@ -1,2 +1,3 @@
 body {margin: 0; border: 0; padding: 0;}
+#leftPane {width: 40%; height: 95;}
 #searchInput {margin: 10px; padding: 10px; width: auto; font-size: 50px; font-weight: 600;}

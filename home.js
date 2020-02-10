@@ -1,14 +1,23 @@
-let menu = {flatwhite:4,cappachino:5,latte:5,longblack:3,shortblack:3,machiato:4}; // the full list of menu items (everything that can be ordered)
+let menu = {
+  flatwhite:{price:4,containsMilk:true,},
+  cappachino:{price:5,containsMilk:true},
+  latte:{price:5,containsMilk:true},
+  longblack:{price:3,containsMilk:false},
+  shortblack:{price:3,containsMilk:false},
+  machiato:{price:4,containsMilk:true}}; // the full list of menu items (everything that can be ordered)
+let buttonLocations = [document.getElementById("buttonContainer"),document.getElementById('itemsOutput'),];
 let menuKeys = Object.keys(menu);
 let currentButtons = [];
 let search = new RegExp();
 let searchInput = [];
 let exampleKey = '';
-let buttonContainer = document.getElementById("buttonContainer");
+let subTotal = 0;
+let items = [];
 
 //Creates the initial buttons using 'menu'
   for(i=0;i<menuKeys.length;i++){
-    addButton(menuKeys[i]);
+    console.log(menuKeys[i]);
+    addButton(menuKeys[i],menuKeys[i],0,0);
   }
 
 
@@ -38,6 +47,7 @@ function updateButtons() {
   }// Find buttons to remove
   console.log('before splicing, the searchInput is --' + searchInput +'--');
   for(i = 0 ; i < searchInput.length; i++) {
+    console.log('currentButtons = --' + currentButtons + '-- searchInput[' + i + '] = --' + searchInput[i] + '--');
       if (currentButtons.includes(searchInput[i])){
         console.log('Splicing --' + searchInput[i] + '--');
         searchInput.splice(i,1);
@@ -47,15 +57,48 @@ function updateButtons() {
   }// Find buttons to keep and removes them from searchInput
   for (var x = 0; x < searchInput.length; x++) {
     console.log("searchInput"+searchInput);
-    addButton(searchInput[x]);
+    addButton(searchInput[x],0,0);
   }//adds buttons
 }
 
 
-function addButton(x){
-    let button = document.createElement("button");
-    button.innerHTML = x + ' $'+ menu[x];
-    button.id = x; // defines button id eg. id='flatWhiteButton'
-    currentButtons.push(button.id);
-    buttonContainer.appendChild(button);
+function buttonPress(buttonId,name,action){ // Will process the button id and 'action'(0 for addition, 1 for subtraction) to either add or subtract an order
+  if (action == 0){
+    console.log(name);
+    subTotal = subTotal + menu[name]['price'];
+    /*let ul = document.getElementById('itemsOutput');
+    let li = document.createElement('li');
+    li.innerHTML = (menu[buttonId] + ' ' + menu[buttonId]['price'])
+    li.onclick = function */
+    addButton(buttonId,name,1,1);
+    console.log(buttonId);
+  } else if (action == 1){
+    subTotal = subTotal - menu[name]['price'];
+    removeButton(buttonId,1);
+  }
+  document.getElementById('subTotalOutput').innerHTML = 'Subtotal: ' + subTotal + '$'
+  document.getElementById('itemsOutput').innerHTML
 }
+
+
+function addButton(buttonId, name, buttonLocation, pressAction){
+    let button = document.createElement("button");
+    button.innerHTML = name + ' $' + menu[name]['price'];
+    button.id = buttonId + buttonLocation; // defines button id eg. id='flatWhite1'
+    button.name = name;
+    button.onclick = function(){buttonPress(this.id, name, pressAction)};
+    currentButtons.push(button.id);
+    buttonLocations[buttonLocation].appendChild(button);
+}
+
+function removeButton(buttonId, buttonLocation) {
+  let garbage = buttonLocations[buttonLocation];
+  let child = document.getElementById(buttonId);
+  console.log(child);
+  console.log(garbage);
+  garbage.removeChild(child);
+}
+
+/* document.addEventListener('contextmenu'){
+  document.getElementById('funnymenu').style.backgroundColor = 'green';
+} */
