@@ -91,7 +91,6 @@ function addButton(buttonId, name, buttonLocation, pressAction){
     buttonLocations[buttonLocation].appendChild(button);
 }
 
-<<<<<<< HEAD
 function removeButton(buttonId, buttonLocation) {
   let garbage = buttonLocations[buttonLocation];
   let child = document.getElementById(buttonId);
@@ -103,13 +102,3 @@ function removeButton(buttonId, buttonLocation) {
 /* document.addEventListener('contextmenu'){
   document.getElementById('funnymenu').style.backgroundColor = 'green';
 } */
-=======
-
-testy = document.getElementById('test');
-testy.addEventListener('contextmenu', e => {
-  console.log('working');
-  document.getElementById('test').style.color = 'green';
-  e.preventDefault();
-})
-
->>>>>>> 7b13f131d83a6fadde3a353c8e23c9d5e27fb6e1
