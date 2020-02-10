@@ -73,7 +73,6 @@ function buttonPress(buttonId,name,action) {
   document.getElementById('itemsOutput').innerHTML
 }
 
-
 function addButton(buttonId, name, buttonLocation, pressAction){
     let button = document.createElement("button");
     console.log('8' + name);
@@ -91,13 +90,9 @@ function removeButton(buttonId, buttonLocation) {
   garbage.removeChild(child);
 }
 
-/* document.addEventListener('contextmenu'){
-  document.getElementById('funnymenu').style.backgroundColor = 'green';
-} */
-
 testy = document.getElementById('test');
-testy.addEventListener('contextmenu', e => {
-  console.log('working');
-  document.getElementById('test').style.color = 'green';
-  e.preventDefault();
+testy.addEventListener('contextmenu', bro => {
+  console.log('contextmenu event caught');
+  document.getElementById('test').style.color = ('white');
+  bro.preventDefault();
 })

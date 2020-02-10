@@ -19,11 +19,11 @@ Right pane:
   Order note/s
     A text box that can be filled
 
-
+search menu is fucking broken bro! :(
+  'cannot read property 'price' of undefined
+    at addButton js:85
+    at updateButtons js:60
+    at doSearch js:33
+    at HTMLInputElement.onInput html:9'
 
 Data from each order will be saved to github
-
-
-funny
-
-check this out paul
