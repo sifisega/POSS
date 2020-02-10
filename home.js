@@ -102,10 +102,10 @@ function removeButton(buttonId, buttonLocation) {
 /* document.addEventListener('contextmenu'){
   document.getElementById('funnymenu').style.backgroundColor = 'green';
 } */
-
+//what is that shit in the html file??? '7b13f131d83a6fadde3a353c8e23c9d5e27fb6e1'
 testy = document.getElementById('test');
 testy.addEventListener('contextmenu', e => {
-  console.log('working');
-  document.getElementById('test').style.color = 'green';
+  console.log('event caught');
+  document.getElementById('test').style.color = ('white');
   e.preventDefault();
 })
