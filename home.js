@@ -102,3 +102,10 @@ function removeButton(buttonId, buttonLocation) {
 /* document.addEventListener('contextmenu'){
   document.getElementById('funnymenu').style.backgroundColor = 'green';
 } */
+
+testy = document.getElementById('test');
+testy.addEventListener('contextmenu', e => {
+  console.log('working');
+  document.getElementById('test').style.color = 'green';
+  e.preventDefault();
+})
