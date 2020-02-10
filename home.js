@@ -80,7 +80,6 @@ function buttonPress(buttonId,name,action){ // Will process the button id and 'a
   document.getElementById('itemsOutput').innerHTML
 }
 
-
 function addButton(buttonId, name, buttonLocation, pressAction){
     let button = document.createElement("button");
     button.innerHTML = name + ' $' + menu[name]['price'];
@@ -99,13 +98,9 @@ function removeButton(buttonId, buttonLocation) {
   garbage.removeChild(child);
 }
 
-/* document.addEventListener('contextmenu'){
-  document.getElementById('funnymenu').style.backgroundColor = 'green';
-} */
-//what is that shit in the html file??? '7b13f131d83a6fadde3a353c8e23c9d5e27fb6e1'
 testy = document.getElementById('test');
-testy.addEventListener('contextmenu', e => {
+testy.addEventListener('contextmenu', bro => {
   console.log('event caught');
   document.getElementById('test').style.color = ('white');
-  e.preventDefault();
+  bro.preventDefault();
 })
