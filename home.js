@@ -100,7 +100,7 @@ function removeButton(buttonId, buttonLocation) {
 
 testy = document.getElementById('test');
 testy.addEventListener('contextmenu', bro => {
-  console.log('event caught');
+  console.log('contextmenu event caught');
   document.getElementById('test').style.color = ('white');
   bro.preventDefault();
 })
